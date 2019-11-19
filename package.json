@@ -1,0 +1,24 @@
+{
+  "name": "unravelapi",
+  "version": "1.0.0",
+  "description": "The main API for Unravel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unravel-Mobile/UnravelAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Unravel-Mobile/UnravelAPI/issues"
+  },
+  "homepage": "https://github.com/Unravel-Mobile/UnravelAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.11"
+  }
+}

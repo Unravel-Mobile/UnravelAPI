@@ -4,7 +4,7 @@ var db = require('../models');
 
 
 // Route for saving a new thougt to the db and associating it with a User
-Router.post("/submit", function (req, res) {
+Router.post("/thoughts", function (req, res) {
     // Create a new Thought in the db
     db.Thought.create(req.body)
         .then(function (dbThought) {
@@ -27,6 +27,34 @@ Router.post("/submit", function (req, res) {
             res.json(err);
         });
 });
-// Router.post("/signin");
+
+
+Router.get('/thoughts', function (req, res) {
+    db.Thought.find()
+        .then(function (dbSaved) {
+            console.log("********************")
+            console.log(dbSaved);
+            console.log("**************");
+            res.json(dbSaved);
+        })
+        .catch(function (err) {
+            // If an error occurs, send it back to the client
+            res.json(err);
+        });
+});
+
+Router.delete('/thoughts/:_id', function (req, res) {
+    console.log("DELETE")
+    db.Thought.findByIdAndDelete({ _id: req.params._id })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
+});
+
+
 
 module.exports = Router;

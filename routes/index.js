@@ -27,6 +27,6 @@ Router.post("/submit", function (req, res) {
             res.json(err);
         });
 });
-Router.post("/signin");
+// Router.post("/signin");
 
 module.exports = Router;

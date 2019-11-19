@@ -5,7 +5,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 // Routing refers to how an application’s endpoints (URIs) respond to client requests
-// const routes = require("./routes");
+const routes = require("./routes");
 
 // passing and instance of the module express to the const app
 const app = express();
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add routes, both API and view
-// app.use(routes);
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(

@@ -10,6 +10,9 @@ const routes = require("./routes");
 // passing and instance of the module express to the const app
 const app = express();
 
+const cors = require('cors');
+app.use(cors());
+
 // const PORT gets whatever is in the environment variable PORT, or 3000 if there's nothing there.
 const PORT = process.env.PORT || 3001;
 

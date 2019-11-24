@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Unravel-Mobile/UnravelAPI#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.7.11"
   }

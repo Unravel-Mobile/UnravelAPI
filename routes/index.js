@@ -54,13 +54,13 @@ Router.post("/thoughts", function (req, res) {
 });
 
 
-Router.get('/thoughts', function (req, res) {
-    db.Thought.find()
+Router.get('/thoughts/:_id', function (req, res) {
+    db.Thought.findById(req.params._id)
         .then(function (dbSaved) {
             console.log("********************")
-            console.log(dbSaved);
+            console.log(dbSaved.thoughtId);
             console.log("**************");
-            res.json(dbSaved);
+            res.json(dbSaved.thoughtId);
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client

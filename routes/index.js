@@ -55,7 +55,7 @@ Router.post("/thoughts", function (req, res) {
 
 
 Router.get('/thoughts/:_id', function (req, res) {
-    db.Thought.findById(req.params._id)
+    db.Thought.findById({_id: req.params._id})
         .then(function (dbSaved) {
             console.log("********************")
             console.log(dbSaved.thoughtId);

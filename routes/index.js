@@ -60,7 +60,7 @@ Router.get('/thoughts/:_id', function (req, res) {
             console.log("********************")
             console.log(dbSaved.thoughtId);
             console.log("**************");
-            res.json(dbSaved.thoughtId);
+            res.json(dbSaved);
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client

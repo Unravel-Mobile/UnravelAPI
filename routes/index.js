@@ -27,6 +27,21 @@ Router.post("/signin", function (req, res) {
         });
 });
 
+Router.get('/thoughts/:_id', function (req, res) {
+    db.User.findById({ _id: req.params._id })
+        .populate('thoughts')
+        .then(function (dbSaved) {
+            console.log("********************")
+            console.log(dbSaved.thoughtId);
+            console.log("**************");
+            res.json(dbSaved);
+        })
+        .catch(function (err) {
+            // If an error occurs, send it back to the client
+            res.json(err);
+        });
+});
+
 
 // Route for saving a new thougt to the db and associating it with a User
 Router.post("/thoughts", function (req, res) {
@@ -40,7 +55,7 @@ Router.post("/thoughts", function (req, res) {
             console.log(dbThought);
             console.log("==========")
 
-            return db.User.findOneAndUpdate({}, { $push: { notes: dbThought._id } }, { new: true });
+            return db.User.findOneAndUpdate({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
             // return 'YAHOO';
         })
         .then(function (dbUser) {

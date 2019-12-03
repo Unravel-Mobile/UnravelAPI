@@ -16,9 +16,9 @@ const userSchema = new Schema({
     userId: {
         type: String
     },
-    thoughtId: [{
+    thoughts: [{
         type: Schema.Types.ObjectId,
-        ref: 'Thoughts'
+        ref: 'Thought'
         
     }]
 });

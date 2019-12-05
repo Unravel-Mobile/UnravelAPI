@@ -28,7 +28,7 @@ Router.post("/signin", function (req, res) {
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {
-    db.User.findById({ _id: req.params._id })
+    db.User.findById(req.params._id)
         .populate('thoughts')
         .then(function (dbSaved) {
             console.log("********************")

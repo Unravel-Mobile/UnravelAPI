@@ -27,12 +27,12 @@ Router.post("/signin", function (req, res) {
         });
 });
 
-Router.get('/thoughts/:_id', function (req, res) {
+Router.get('/user/thoughts/:_id', function (req, res) {
     db.User.findById({ _id: req.params._id })
         .populate('thoughts')
         .then(function (dbSaved) {
             console.log("********************")
-            console.log(dbSaved.thoughtId);
+            console.log(dbSaved);
             console.log("**************");
             res.json(dbSaved);
         })
@@ -54,8 +54,8 @@ Router.post("/thoughts", function (req, res) {
             console.log("==========")
             console.log(dbThought);
             console.log("==========")
-
-            return db.User.findOneAndUpdate({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
+            // .update({_id: contact.id}, upsertData
+            return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
             // return 'YAHOO';
         })
         .then(function (dbUser) {

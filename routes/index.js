@@ -8,23 +8,18 @@ var db = require('../models');
 Router.post("/signin", function (req, res) {
     // Create a new User in the db
     db.User.create(req.body)
-        .then(function (dbUser) {
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(401).json(err))
+    
             // If a User was created successfully, find one User (there's only one) and push the new User's _id to the User's `Users` array
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            console.log("==========")
-            console.log(dbUser);
-            console.log("==========")
+            // console.log("==========")
+            // console.log(dbUser);
+            // console.log("==========")
 
-        })
-        .then(function (dbUser) {
-            // If the User was updated successfully, send it back to the client
-            res.json(dbUser);
-        })
-        .catch(function (err) {
-            // If an error occurs, send it back to the client
-            res.json(err);
-        });
+
+
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {

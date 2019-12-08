@@ -17,9 +17,11 @@ Router.post("/signin", function (req, res) {
             // console.log("==========")
             // console.log(dbUser);
             // console.log("==========")
+});
 
-
-
+Router.get("/", function (req, res) {
+// rendering something to the page so it does not look so lonely
+    res.send('WELCOME TO THE UNRAVEL APP® API');
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {

@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
 // Each key in code userSchema defines a property in the documents which will be cast to its associated SchemaType.   https://mongoosejs.com/docs/guide.html#definition
 
-// properties: title, subtitle, authors all on the left hand size before the :
+// properties: title, subtitle, authors all on the left hand side before the :
 // Schema Types on the right hand size of the : 
 // all are strings and all but subtitle are required
 // only google id is unique

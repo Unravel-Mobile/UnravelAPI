@@ -14,9 +14,9 @@ Router.post("/signin", function (req, res) {
             // If a User was created successfully, find one User (there's only one) and push the new User's _id to the User's `Users` array
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            // console.log("==========")
-            // console.log(dbUser);
-            // console.log("==========")
+            console.log("+++++++++++++")
+            console.log(dbUser);
+            console.log("+++++++++++")
 });
 
 Router.get("/", function (req, res) {
@@ -42,6 +42,8 @@ Router.get('/user/thoughts/:_id', function (req, res) {
 
 // Route for saving a new thougt to the db and associating it with a User
 Router.post("/thoughts", function (req, res) {
+    console.log(req);
+    console.log(res);
     // Create a new Thought in the db
     db.Thought.create(req.body)
         .then(function (dbThought) {

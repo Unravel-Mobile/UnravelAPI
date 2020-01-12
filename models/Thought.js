@@ -19,7 +19,8 @@ const thoughtSchema = new Schema({
     changedThought: { type: String, required: true },
     postRating: { type: Number, required: true },
     wordSelect2: [{ type: String, required: true }],
-    picture: { type: String }
+    picture: { type: String },
+    created: {type: String}
 });
 
 // const Thoughts gets the DB so it can then be used elsewhere after export

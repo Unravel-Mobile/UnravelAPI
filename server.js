@@ -11,6 +11,9 @@ const routes = require("./routes");
 
 // passing and instance of the module express to the const app
 const app = express();
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // for parsing application/json
 
 const cors = require('cors');
 app.use(cors());

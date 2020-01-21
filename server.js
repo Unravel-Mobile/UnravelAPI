@@ -5,6 +5,7 @@ const express = require("express");
 
 // Object Data Modeling (ODM) library for MongoDB and Node.js
 const mongoose = require("mongoose");
+const objId = mongoose.Types.ObjectId;
 
 // Routing refers to how an application’s endpoints (URIs) respond to client requests
 const routes = require("./routes");

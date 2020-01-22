@@ -11,7 +11,7 @@ Router.post("/signin", function (req, res) {
     console.log('SIGN IN  REQ');
     console.log(' SIGN IN  R E S ');
     console.log(res),
-    console.log(' SIGN IN  R E S ');
+        console.log(' SIGN IN  R E S ');
 
     // Create a new User in the db
     db.User.create(req.body)
@@ -43,10 +43,10 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     db.User.findById(req.params._id)
         .populate('thoughts')
         .then(function (dbSaved) {
-            console.log('********************')
-            console.log(dbSaved);
-            console.log('**************');
             res.json(dbSaved);
+            console.log('****  WHAT WE HAVE ON DB  ****')
+            console.log(dbSaved);
+            console.log('****  WHAT WE HAVE ON DB  ****');
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client
@@ -70,10 +70,10 @@ Router.post("/thoughts", function (req, res) {
             // If a Thought was created successfully, find one User (there's only one) and push the new Thought's _id to the User's `thoughts` array
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            // console.log("==========");
-            // console.log(dbThought);
-            // console.log("==========");
-            // console.log('req body userId -> ', req.body.userId);
+            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            console.log(dbThought);
+            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
             return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
             // return 'YAHOO';
@@ -81,10 +81,12 @@ Router.post("/thoughts", function (req, res) {
         .then(function (dbUser) {
             // If the User was updated successfully, send it back to the client
             res.json(dbUser);
+            console.log('indexjs line 83 dbUser - - > ', dbUser);
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client
             res.json(err);
+            console.log(err);
         });
 });
 

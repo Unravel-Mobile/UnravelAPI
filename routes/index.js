@@ -6,46 +6,46 @@ var db = require('../models');
 //Sign in Authentication Route
 
 Router.post("/signin", function (req, res) {
-    console.log(' R E Q ');
+    console.log(' SIGN IN  R E Q ');
     console.log(req);
-    console.log('REQ');
-    console.log(' R E S ');
+    console.log('SIGN IN  REQ');
+    console.log(' SIGN IN  R E S ');
     console.log(res),
-    console.log(' R E S ');
+    console.log(' SIGN IN  R E S ');
 
     // Create a new User in the db
     db.User.create(req.body)
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(401).json(err))
-    
-            // If a User was created successfully, find one User (there's only one) and push the new User's _id to the User's `Users` array
-            // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-            // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            // console.log("+++++++++++++")
-            // console.log(dbUser);
-            // console.log("+++++++++++")
+
+    // If a User was created successfully, find one User (there's only one) and push the new User's _id to the User's `Users` array
+    // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+    // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+    // console.log("+++++++++++++")
+    // console.log(dbUser);
+    // console.log("+++++++++++")
 });
 
 Router.get("/", function (req, res) {
-// rendering something to the page so it does not look so lonely
+    // rendering something to the page so it does not look so lonely
     res.send('WELCOME TO THE UNRAVEL APP® API');
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {
-    console.log('* *  R E Q   B E L O W   T H I S   L I N E * *');
-    console.log(req);
-    console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
+    // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
+    // console.log(req);
+    // console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
 
-    console.log('* *  R E S   B E L O W   T H I S   L I N E * *');
-    console.log(res);
-    console.log('*  * R E S   A B O V E   T H I S   L  I N E * *');
+    // console.log('* *  R E S   B E L O W   T H I S   L I N E * *');
+    // console.log(res);
+    // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
     db.User.findById(req.params._id)
         .populate('thoughts')
         .then(function (dbSaved) {
-            // console.log("********************")
-            // console.log(dbSaved);
-            // console.log("**************");
+            console.log("********************")
+            console.log(dbSaved);
+            console.log("**************");
             res.json(dbSaved);
         })
         .catch(function (err) {
@@ -57,8 +57,13 @@ Router.get('/user/thoughts/:_id', function (req, res) {
 
 // Route for saving a new thougt to the db and associating it with a User
 Router.post("/thoughts", function (req, res) {
-    // console.log(req);
-    // console.log(res);
+    console.log('INDEXJS POST REQ BELOW');
+    console.log(req);
+    console.log('INDEXJS POST REQ ABOVE');
+    console.log('========================================');
+    console.log('INDEXJS POST RES BELOW');
+    console.log(res);
+    console.log('INDEXJS POST RES ABOVE');
     // Create a new Thought in the db
     db.Thought.create(req.body)
         .then(function (dbThought) {
@@ -85,7 +90,7 @@ Router.post("/thoughts", function (req, res) {
 
 
 Router.get('/thoughts/:_id', function (req, res) {
-    db.Thought.findById({_id: req.params._id})
+    db.Thought.findById({ _id: req.params._id })
         .then(function (dbSaved) {
             // console.log("********************")
             // console.log(dbSaved.thoughtId);

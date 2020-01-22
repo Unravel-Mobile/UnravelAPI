@@ -43,9 +43,9 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     db.User.findById(req.params._id)
         .populate('thoughts')
         .then(function (dbSaved) {
-            console.log("********************")
+            console.log('********************')
             console.log(dbSaved);
-            console.log("**************");
+            console.log('**************');
             res.json(dbSaved);
         })
         .catch(function (err) {
@@ -57,13 +57,13 @@ Router.get('/user/thoughts/:_id', function (req, res) {
 
 // Route for saving a new thougt to the db and associating it with a User
 Router.post("/thoughts", function (req, res) {
-    console.log('INDEXJS POST REQ BELOW');
-    console.log(req);
-    console.log('INDEXJS POST REQ ABOVE');
+    console.log('INDEXJS POST REQ.BODY BELOW');
+    console.log(req.body);
+    console.log('INDEXJS POST REQ.BODY ABOVE');
     console.log('========================================');
-    console.log('INDEXJS POST RES BELOW');
-    console.log(res);
-    console.log('INDEXJS POST RES ABOVE');
+    console.log('INDEXJS POST RES.BODY BELOW');
+    console.log(res.body);
+    console.log('INDEXJS POST RES.BODY ABOVE');
     // Create a new Thought in the db
     db.Thought.create(req.body)
         .then(function (dbThought) {
@@ -92,9 +92,9 @@ Router.post("/thoughts", function (req, res) {
 Router.get('/thoughts/:_id', function (req, res) {
     db.Thought.findById({ _id: req.params._id })
         .then(function (dbSaved) {
-            // console.log("********************")
-            // console.log(dbSaved.thoughtId);
-            // console.log("**************");
+            console.log('++++++++++++++++++++++')
+            console.log(dbSaved.thoughtId);
+            console.log('++++++++++++++++++++++');
             res.json(dbSaved);
         })
         .catch(function (err) {

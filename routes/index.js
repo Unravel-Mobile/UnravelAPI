@@ -55,7 +55,7 @@ Router.get('/user/thoughts/:_id', function (req, res) {
 });
 
 
-// Route for saving a new thougt to the db and associating it with a User
+// Route for saving a new thought to the db and associating it with a User
 Router.post("/thoughts", function (req, res) {
     console.log('INDEXJS POST REQ.BODY BELOW');
     console.log(req.body);
@@ -75,7 +75,9 @@ Router.post("/thoughts", function (req, res) {
             console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
-            return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
+            // return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
+            return db.User.findOneAndUpdate({}, { $push: { thoughts: dbThought._id } }, { new: true });
+
             // return 'YAHOO';
         })
         .then(function (dbUser) {
@@ -94,14 +96,14 @@ Router.post("/thoughts", function (req, res) {
 Router.get('/thoughts/:_id', function (req, res) {
     db.Thought.findById({ _id: req.params._id })
         .then(function (dbSaved) {
-            console.log('++++++++++++++++++++++')
-            console.log(dbSaved.thoughtId);
-            console.log('++++++++++++++++++++++');
+            console.log('++++++INDEXJS LINE 98 REQ.BODY BELOW+++++++++')
+            console.log(req.body);
+            console.log('++++++INDEXJS LINE 98 REQ.BODY ABEVR++++++++');
             res.json(dbSaved);
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client
-            res.json(err);
+            res.json('index line 104 error - - > ', err);
         });
 });
 

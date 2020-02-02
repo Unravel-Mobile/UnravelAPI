@@ -9,7 +9,6 @@ const Schema = mongoose.Schema;
 // properties: title, subtitle, authors all on the left hand size before the :
 // Schema Types on the right hand size of the : 
 // all are strings and all but subtitle are required
-// only google id is unique
 const thoughtSchema = new Schema({
     title: { type: String, required: true },
     situation: { type: String, required: true },
@@ -26,5 +25,5 @@ const thoughtSchema = new Schema({
 // const Thoughts gets the DB so it can then be used elsewhere after export
 const Thought = mongoose.model("Thought", thoughtSchema);
 
-// The module.exports or exports is a special object which is included in every JS file in the Node.js application by default. module is a variable that represents current module and exports is an object that will be exposed as a module. So, whatever you assign to module.exports or exports, will be exposed as a module.
+// The module.exports is a special object which is included in every JS file in the Node.js application by default. module is a variable that represents current module and exports is an object that will be exposed as a module. So, whatever you assign to module.exports or exports, will be exposed as a module.
 module.exports = Thought;

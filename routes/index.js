@@ -31,7 +31,8 @@ Router.get("/", function (req, res) {
     res.send('WELCOME TO THE UNRAVEL APP® API');
 });
 
-Router.get('/user/thoughts/:_id', function (req, res) {
+Router.get('/user/:_id/thoughts/', function (req, res) {
+    
     // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
     // console.log(req);
     // console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
@@ -40,7 +41,7 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
-    db.User.findById(req.params._id)
+    db.User.findById({_id: req.params._id})
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);
@@ -96,9 +97,9 @@ Router.post("/thoughts", function (req, res) {
 Router.get('/thoughts/:_id', function (req, res) {
     db.Thought.findById({ _id: req.params._id })
         .then(function (dbSaved) {
-            console.log('++++++INDEXJS LINE 98 REQ.BODY BELOW+++++++++')
-            console.log(req.body);
-            console.log('++++++INDEXJS LINE 98 REQ.BODY ABEVR++++++++');
+            // console.log('++++++INDEXJS LINE 98 REQ.BODY BELOW+++++++++')
+            // console.log(req.body);
+            // console.log('++++++INDEXJS LINE 98 REQ.BODY ABEVR++++++++');
             res.json(dbSaved);
         })
         .catch(function (err) {

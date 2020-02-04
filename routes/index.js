@@ -44,9 +44,11 @@ Router.get('/user/:_id/thoughts/', function (req, res) {
     db.User.findById({_id: req.params._id})
         .populate('thoughts')
         .then(function (dbSaved) {
-            res.json(dbSaved.thoughts);
-            console.log('****  WHAT WE HAVE ON DB  ****')
+            res.json(dbSaved);
+            console.log('****  WHAT WE HAVE ON DB - DBSAVED  ****')
             console.log(dbSaved);
+            console.log('****  WHAT WE HAVE ON DB - DBSAVED THOUGHTS  ****')
+            console.log(dbSaved.thoughts);
             console.log('****  WHAT WE HAVE ON DB  ****');
         })
         .catch(function (err) {

@@ -11,7 +11,7 @@ Router.post("/signin", function (req, res) {
     console.log('SIGN IN  REQ');
     console.log(' SIGN IN  R E S ');
     console.log(res),
-        console.log(' SIGN IN  R E S ');
+    console.log(' SIGN IN  R E S ');
 
     // Create a new User in the db
     db.User.create(req.body)
@@ -44,9 +44,9 @@ Router.get('/user/thoughts/:_id', function (req, res) {
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);
-            console.log('****  WHAT WE HAVE ON DB  ****')
-            console.log(dbSaved);
-            console.log('****  WHAT WE HAVE ON DB  ****');
+            // console.log('****  WHAT WE HAVE ON DB  ****')
+            // console.log(dbSaved);
+            // console.log('****  WHAT WE HAVE ON DB  ****');
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client
@@ -57,22 +57,22 @@ Router.get('/user/thoughts/:_id', function (req, res) {
 
 // Route for saving a new thought to the db and associating it with a User
 Router.post("/thoughts", function (req, res) {
-    console.log('INDEXJS POST REQ.BODY BELOW');
-    console.log(req.body);
-    console.log('INDEXJS POST REQ.BODY ABOVE');
-    console.log('========================================');
-    console.log('INDEXJS POST RES.BODY BELOW');
-    console.log(res.body);
-    console.log('INDEXJS POST RES.BODY ABOVE');
+    // console.log('INDEXJS POST REQ.BODY BELOW');
+    // console.log(req.body);
+    // console.log('INDEXJS POST REQ.BODY ABOVE');
+    // console.log('========================================');
+    // console.log('INDEXJS POST RES.BODY BELOW');
+    // console.log(res.body);
+    // console.log('INDEXJS POST RES.BODY ABOVE');
     // Create a new Thought in the db
     db.Thought.create(req.body)
         .then(function (dbThought) {
             // If a Thought was created successfully, find one User (there's only one) and push the new Thought's _id to the User's `thoughts` array
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
-            console.log(dbThought);
-            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            // console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            // console.log(dbThought);
+            // console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
             // return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });

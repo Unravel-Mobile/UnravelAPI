@@ -33,9 +33,9 @@ Router.get("/", function (req, res) {
 
 Router.get('/user/:_id/thoughts/', function (req, res) {
     
-    // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
-    // console.log(req);
-    // console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
+    console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
+    console.log(req);
+    console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
 
     // console.log('* *  R E S   B E L O W   T H I S   L I N E * *');
     // console.log(res);
@@ -45,9 +45,9 @@ Router.get('/user/:_id/thoughts/', function (req, res) {
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);
-            // console.log('****  WHAT WE HAVE ON DB  ****')
-            // console.log(dbSaved);
-            // console.log('****  WHAT WE HAVE ON DB  ****');
+            console.log('****  WHAT WE HAVE ON DB  ****')
+            console.log(dbSaved);
+            console.log('****  WHAT WE HAVE ON DB  ****');
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client

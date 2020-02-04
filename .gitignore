@@ -1,3 +1,5 @@
 .env
 archive
 node_modules
+.vscode
+.history

@@ -32,13 +32,13 @@ Router.get("/", function (req, res) {
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {
-    console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
-    console.log(req);
-    console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
+    // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
+    // console.log(req);
+    // console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
 
-    console.log('* *  R E S   B E L O W   T H I S   L I N E * *');
-    console.log(res);
-    console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
+    // console.log('* *  R E S   B E L O W   T H I S   L I N E * *');
+    // console.log(res);
+    // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
     db.User.findById(req.params._id)
         .populate('thoughts')

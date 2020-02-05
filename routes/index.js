@@ -6,12 +6,12 @@ var db = require('../models');
 //Sign in Authentication Route
 
 Router.post("/signin", function (req, res) {
-    console.log(' SIGN IN  R E Q ');
-    console.log(req);
-    console.log('SIGN IN  REQ');
-    console.log(' SIGN IN  R E S ');
-    console.log(res),
-        console.log(' SIGN IN  R E S ');
+    // console.log(' SIGN IN  R E Q ');
+    // console.log(req);
+    // console.log('SIGN IN  REQ');
+    // console.log(' SIGN IN  R E S ');
+    // console.log(res),
+    // console.log(' SIGN IN  R E S ');
 
     // Create a new User in the db
     db.User.create(req.body)
@@ -77,9 +77,9 @@ Router.post("/thoughts", function (req, res) {
             // If a Thought was created successfully, find one User (there's only one) and push the new Thought's _id to the User's `thoughts` array
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            // console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
-            // console.log(dbThought);
-            // console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            console.log(dbThought);
+            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
             // return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });

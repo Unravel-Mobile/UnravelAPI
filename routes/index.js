@@ -23,7 +23,7 @@ Router.post("/signin", function (req, res) {
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {
-    db.User.findById(req.params._id)
+    db.User.findById({_id: req.params._id})
         .populate('thoughts')
         .then(function (dbSaved) {
             console.log("********************")
@@ -50,7 +50,7 @@ Router.post("/thoughts", function (req, res) {
             console.log(dbThought);
             console.log("==========")
             // .update({_id: contact.id}, upsertData
-            return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
+            return db.User.updateOne({ _id: req.body.userId }, { $push: dbThought._id }, { new: true });
             // return 'YAHOO';
         })
         .then(function (dbUser) {
@@ -82,6 +82,18 @@ Router.delete('/thoughts/:_id', function (req, res) {
     console.log("DELETE")
     db.Thought.findByIdAndDelete({ _id: req.params._id })
         .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+});
+
+Router.get('/thoughts/all', function (req, res) {
+    console.log("GET ALL THOUGHTS")
+    db.Thought.find()
+        .then(res => {
+            console.log("/nALL THOUGHTS");
             console.log(res);
         })
         .catch(err => {

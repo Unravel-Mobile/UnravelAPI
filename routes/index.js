@@ -31,7 +31,7 @@ Router.get("/", function (req, res) {
     res.send('WELCOME TO THE UNRAVEL APP® API');
 });
 
-Router.get('/user/:_id/thoughts/', function (req, res) {
+Router.get('/user/thoughts/:_id', function (req, res) {
     
     // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
     // console.log(req);

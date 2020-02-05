@@ -11,7 +11,7 @@ Router.post("/signin", function (req, res) {
     console.log('SIGN IN  REQ');
     console.log(' SIGN IN  R E S ');
     console.log(res),
-    console.log(' SIGN IN  R E S ');
+        console.log(' SIGN IN  R E S ');
 
     // Create a new User in the db
     db.User.create(req.body)
@@ -31,20 +31,23 @@ Router.get("/", function (req, res) {
     res.send('WELCOME TO THE UNRAVEL APP® API');
 });
 
-Router.get('/user/:_id/thoughts/', function (req, res) {
-    
-    console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
-    console.log(req);
-    console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
+Router.get('/user/thoughts/:_id', function (req, res) {
+
+    // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
+    // console.log(req);
+    // console.log('*  * R E Q   A B O V E   T H I S   L  I N E * *');
 
     // console.log('* *  R E S   B E L O W   T H I S   L I N E * *');
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
-    db.User.findById({_id: req.params._id})
+    db.User.findById({ _id: req.params._id })
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);
+            console.log('* *  I N D E X J S  R E Q   P A R A M S * *');
+            console.log(req.params);
+            console.log('*  * I N D E X J S  R E Q   P A R A M S * *');
             console.log('****  WHAT WE HAVE ON DB - DBSAVED  ****')
             console.log(dbSaved);
             console.log('****  WHAT WE HAVE ON DB - DBSAVED THOUGHTS  ****')
@@ -54,6 +57,7 @@ Router.get('/user/:_id/thoughts/', function (req, res) {
         .catch(function (err) {
             // If an error occurs, send it back to the client
             res.json(err);
+            console.log('indexjs line 59 err - > ', err );
         });
 });
 

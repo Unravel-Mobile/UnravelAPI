@@ -57,6 +57,7 @@ Router.get('/user/thoughts/:_id', function (req, res) {
         .catch(function (err) {
             // If an error occurs, send it back to the client
             res.json(err);
+            console.log('indexjs line 59 err - > ', err );
         });
 });
 

@@ -45,7 +45,7 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
-    db.User.findById({ _id: req.params.dbSaved._id })
+    db.User.findById({ _id: req.params._id })
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);

@@ -34,29 +34,28 @@ Router.get("/", function (req, res) {
 });
 
 Router.get('/user/thoughts/:userId', function (req, res) {
-    var dbUser = null; // mongo db user object
-    var dbUserThoughts = null; // array of thought _ids 
+
 
     // db.User.find() returns an array of all matches as result.
     db.User.findOne({ userId: req.params.userId }).populate("User").exec(
         function (err, dbuser) {
+            var dbUserThoughts = null; // array of thought _ids 
             if (err) console.log(err);
-            dbUser = dbuser;
             dbUserThoughts = dbuser.thoughts;
             console.log("USER IN MONGO DB: ", dbuser);
             console.log("USER ID: ", dbuser.userId);
             console.log("USER THOUGHTS: ", dbuser.thoughts);
-        });
 
-    if (dbUserThoughts && dbUserThoughts.length) {
-        db.Thoughts.find({ _id: { $in : dbUserThoughts }}).populate("Thought").exec(
-            function(err, dbthought) {
-                if (err) console.log(err); 
-                console.log("THOUGHTS IN DB", dbthought);
+            if (dbUserThoughts && dbUserThoughts.length) {
+                db.Thought.find({ _id: { $in : dbUserThoughts }}).populate("Thought").exec(
+                    function(err, dbthought) {
+                        if (err) console.log(err); 
+                        console.log("THOUGHTS IN DB", dbthought);
+                });
+            } else {
+                console.log("Something wrong with user thoughts id: ", dbUserThoughts);
+            }
         });
-    } else {
-        console.log("Something wrong with user thoughts id: ", dbUserThoughts);
-    }
     
 
     // db.User.findOne({ userId: req.params._id })

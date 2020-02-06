@@ -49,31 +49,36 @@ Router.get('/user/thoughts/:userId', function (req, res) {
             if (err) return handleError(err);
             console.log("USER IN MONGO DB: ", dbuser);
             console.log("USER ID: ", dbuser.userId);
-            console.log("USEr THOUGHTS: ", dbuser.thoughts);
+            console.log("USER THOUGHTS: ", dbuser.thoughts);
+            db.Thoughts.find({ _id: { $in : dbuser.thoughts }}).populate("Thought").exec(
+                function(err, dbthought) {
+                    console.log("THOUGHTS IN DB", dbthought);
+                }
+            );
         });
     
 
-    db.User.findOne({ userId: req.params._id })
-        .populate('thoughts')
-        .then(function (dbSaved) {
-            res.json(dbSaved);
-            console.log('* *  I N D E X J S  R E Q   P A R A M S * *');
-            console.log(req.params);
-            console.log('*  * I N D E X J S  R E Q   P A R A M S * *');
-            console.log('****  WHAT WE HAVE ON DB - DBSAVED  ****')
-            console.log(dbSaved);
-            console.log('****  WHAT WE HAVE ON DB - DBSAVED THOUGHTS  ****')
-            console.log(dbSaved.thoughts);
-            console.log('****  WHAT WE HAVE ON DB  ****');
-            console.log('****  WHAT WE TO RENDER - DBSAVED THOUGHTS  ****')
-            console.log(dbSaved._id);
-            console.log('****  WHAT WE NEED TO RENDER ON DB  ****');
-        })
-        .catch(function (err) {
-            // If an error occurs, send it back to the client
-            res.json(err);
-            console.log('indexjs line 59 err - > ', err );
-        });
+    // db.User.findOne({ userId: req.params._id })
+    //     .populate('thoughts')
+    //     .then(function (dbSaved) {
+    //         res.json(dbSaved);
+    //         console.log('* *  I N D E X J S  R E Q   P A R A M S * *');
+    //         console.log(req.params);
+    //         console.log('*  * I N D E X J S  R E Q   P A R A M S * *');
+    //         console.log('****  WHAT WE HAVE ON DB - DBSAVED  ****')
+    //         console.log(dbSaved);
+    //         console.log('****  WHAT WE HAVE ON DB - DBSAVED THOUGHTS  ****')
+    //         console.log(dbSaved.thoughts);
+    //         console.log('****  WHAT WE HAVE ON DB  ****');
+    //         console.log('****  WHAT WE TO RENDER - DBSAVED THOUGHTS  ****')
+    //         console.log(dbSaved._id);
+    //         console.log('****  WHAT WE NEED TO RENDER ON DB  ****');
+    //     })
+    //     .catch(function (err) {
+    //         // If an error occurs, send it back to the client
+    //         res.json(err);
+    //         console.log('indexjs line 59 err - > ', err );
+    //     });
 });
 
 

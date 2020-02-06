@@ -1,17 +1,20 @@
 const express = require("express");
 var Router = express.Router();
-var db = require('../models');
+var db = require('../models');var path = require("path");
+var path = require("path");
+
+
 
 
 //Sign in Authentication Route
 
 Router.post("/signin", function (req, res) {
-    console.log(' SIGN IN  R E Q ');
-    console.log(req);
-    console.log('SIGN IN  REQ');
-    console.log(' SIGN IN  R E S ');
-    console.log(res),
-        console.log(' SIGN IN  R E S ');
+    // console.log(' SIGN IN  R E Q ');
+    // console.log(req);
+    // console.log('SIGN IN  REQ');
+    // console.log(' SIGN IN  R E S ');
+    // console.log(res),
+    // console.log(' SIGN IN  R E S ');
 
     // Create a new User in the db
     db.User.create(req.body)
@@ -28,7 +31,8 @@ Router.post("/signin", function (req, res) {
 
 Router.get("/", function (req, res) {
     // rendering something to the page so it does not look so lonely
-    res.send('WELCOME TO THE UNRAVEL APP® API');
+    // res.send('WELCOME TO THE UNRAVEL APP® API');
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {
@@ -53,6 +57,9 @@ Router.get('/user/thoughts/:_id', function (req, res) {
             console.log('****  WHAT WE HAVE ON DB - DBSAVED THOUGHTS  ****')
             console.log(dbSaved.thoughts);
             console.log('****  WHAT WE HAVE ON DB  ****');
+            console.log('****  WHAT WE TO RENDER - DBSAVED THOUGHTS  ****')
+            console.log(dbSaved._id);
+            console.log('****  WHAT WE NEED TO RENDER ON DB  ****');
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client
@@ -77,9 +84,9 @@ Router.post("/thoughts", function (req, res) {
             // If a Thought was created successfully, find one User (there's only one) and push the new Thought's _id to the User's `thoughts` array
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            // console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
-            // console.log(dbThought);
-            // console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
+            console.log(dbThought);
+            console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
             // return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });

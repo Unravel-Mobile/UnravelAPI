@@ -31,7 +31,7 @@ Router.get("/", function (req, res) {
     res.send('WELCOME TO THE UNRAVEL APP® API');
 });
 
-Router.get('/user/thoughts/:userId', function (req, res) {
+Router.get('/user/thoughts/:_id', function (req, res) {
 
     // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
     // console.log(req);
@@ -41,7 +41,7 @@ Router.get('/user/thoughts/:userId', function (req, res) {
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
-    db.User.findById({ userId: req.params.userId })
+    db.User.findById({ _id: req.params._id })
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);
@@ -53,6 +53,9 @@ Router.get('/user/thoughts/:userId', function (req, res) {
             console.log('****  WHAT WE HAVE ON DB - DBSAVED THOUGHTS  ****')
             console.log(dbSaved.thoughts);
             console.log('****  WHAT WE HAVE ON DB  ****');
+            console.log('****  WHAT WE TO RENDER - DBSAVED THOUGHTS  ****')
+            console.log(dbSaved._id);
+            console.log('****  WHAT WE NEED TO RENDER ON DB  ****');
         })
         .catch(function (err) {
             // If an error occurs, send it back to the client

@@ -33,7 +33,7 @@ Router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-Router.get('/user/thoughts/:_id', function (req, res) {
+Router.get('/user/thoughts/:userId', function (req, res) {
 
     // console.log('* *  I N D E X J S  R E Q   B E L O W   T H I S   L I N E * *');
     // console.log(req);
@@ -43,7 +43,8 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
-    db.User.find({ userId: req.params._id }).populate("User").exec(
+    // db.User.find() returns an array of all matches as result.
+    db.User.findOne({ userId: req.params.userId }).populate("User").exec(
         function (err, dbuser) {
             if (err) return handleError(err);
             console.log("USER IN MONGO DB: ", dbuser);
@@ -52,7 +53,7 @@ Router.get('/user/thoughts/:_id', function (req, res) {
         });
     
 
-    db.User.findById({ userId: req.params._id })
+    db.User.findOne({ userId: req.params._id })
         .populate('thoughts')
         .then(function (dbSaved) {
             res.json(dbSaved);

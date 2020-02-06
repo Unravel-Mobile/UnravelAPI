@@ -35,7 +35,6 @@ Router.get("/", function (req, res) {
 
 Router.get('/user/thoughts/:userId', function (req, res) {
 
-
     // db.User.find() returns an array of all matches as result.
     db.User.findOne({ userId: req.params.userId }).populate("User").exec(
         function (err, dbuser) {
@@ -48,9 +47,10 @@ Router.get('/user/thoughts/:userId', function (req, res) {
 
             if (dbUserThoughts && dbUserThoughts.length) {
                 db.Thought.find({ _id: { $in : dbUserThoughts }}).populate("Thought").exec(
-                    function(err, dbthought) {
+                    function(err, dbthoughts) {
                         if (err) console.log(err); 
-                        console.log("THOUGHTS IN DB", dbthought);
+                        console.log("THOUGHTS IN DB", dbthoughts);
+                        res.json(dbthoughts);
                 });
             } else {
                 console.log("Something wrong with user thoughts id: ", dbUserThoughts);

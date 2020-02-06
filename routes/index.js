@@ -43,6 +43,11 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
+    var user = db.User.find({ userId: req.params._id });
+    console.log("USER IN MONGO DB: ", user);
+    var thoughts = user.thoughts;
+    console.log("USER FIRST THGOUTH IN MONGODB: ", thoughts[0]);
+
     db.User.findById({ userId: req.params._id })
         .populate('thoughts')
         .then(function (dbSaved) {
@@ -87,8 +92,8 @@ Router.post("/thoughts", function (req, res) {
             console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
-            // return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
-            return db.User.findOneAndUpdate({ userId: req.body.userId }, { $push: { thoughts: dbThought._id } });
+            return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
+            // return db.User.findOneAndUpdate({}, { $push: { thoughts: dbThought._id }}, { new: true });
 
             // return 'YAHOO';
         })

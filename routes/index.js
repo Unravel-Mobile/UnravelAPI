@@ -1,9 +1,7 @@
 const express = require("express");
 var Router = express.Router();
-var db = require('../models');var path = require("path");
+var db = require('../models');
 var path = require("path");
-
-
 
 
 //Sign in Authentication Route
@@ -90,7 +88,7 @@ Router.post("/thoughts", function (req, res) {
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
             // return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { new: true });
-            return db.User.findOneAndUpdate({}, { $push: { thoughts: dbThought._id } }, { new: true });
+            return db.User.findOneAndUpdate({ userId: req.body.userId }, { $push: { thoughts: dbThought._id } });
 
             // return 'YAHOO';
         })

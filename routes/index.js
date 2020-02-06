@@ -1,6 +1,9 @@
 const express = require("express");
 var Router = express.Router();
-var db = require('../models');
+var db = require('../models');var path = require("path");
+var path = require("path");
+
+
 
 
 //Sign in Authentication Route
@@ -28,7 +31,8 @@ Router.post("/signin", function (req, res) {
 
 Router.get("/", function (req, res) {
     // rendering something to the page so it does not look so lonely
-    res.send('WELCOME TO THE UNRAVEL APP® API');
+    // res.send('WELCOME TO THE UNRAVEL APP® API');
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 Router.get('/user/thoughts/:_id', function (req, res) {

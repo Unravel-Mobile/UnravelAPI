@@ -96,7 +96,7 @@ Router.post("/thoughts", function (req, res) {
             console.log("*+=*+=*INDEXJS DB THOUGHT*+=*+=*+");
             console.log('indexjs line 76 req body userId -> ', req.body.userId);
             // .update({_id: contact.id}, upsertData
-            return db.User.updateOne({ _id: req.body.userId }, { $push: { thoughts: dbThought._id } }, { upsert: true });
+            return db.User.updateOne({ userId: req.body.userId }, { $push: { thoughts: dbThought._id } }, { upsert: true });
             // return db.User.findOneAndUpdate({}, { $push: { thoughts: dbThought._id }}, { new: true });
 
             // return 'YAHOO';

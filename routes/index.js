@@ -43,11 +43,14 @@ Router.get('/user/thoughts/:_id', function (req, res) {
     // console.log(res);
     // console.log('*  *  I N D E X J S   R E S   A B O V E   T H I S   L  I N E * *');
 
-    var dbuser = db.User.find({ userId: req.params._id });
-    console.log("USER IN MONGO DB: ", dbuser);
-    console.log("USER IN PATHS ON MANGODB: ", dbuser.populate("paths"));
-    console.log("USER ID: ", dbuser.populate("userId"));
-    console.log("USER FIRST THGOUTH IN MONGODB: ", dbuser.populate("thoughts"));
+    db.User.find({ userId: req.params._id }).populate("User").exec(
+        function (err, dbuser) {
+            if (err) return handleError(err);
+            console.log("USER IN MONGO DB: ", dbuser);
+            console.log("USER ID: ", dbuser.userId);
+            console.log("USEr THOUGHTS: ", dbuser.thoughts);
+        });
+    
 
     db.User.findById({ userId: req.params._id })
         .populate('thoughts')

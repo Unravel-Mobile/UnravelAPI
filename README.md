@@ -16,42 +16,42 @@ Unravel Mobile® offers an alternative to the traditional method of recording st
 A user may have gone through an experience that left them in a state of elevated anxiety, for example.
 Said user will have the opportunity to save:
 
-A title: 
+**A title:** 
 
 'Uncle Bob does not stop talking'
 
-A Situation:
+**A Situation:**
 
 'Aunt's Jill B-day'
 
-A zero to 10 rating to said situation (in the form of a slider):
+**A zero to 10 rating to said situation (in the form of a slider):**
 
 preRating: 7,
 
-Preselected words that may matched how the user is feeling:
+**Preselected words that may matched how the user is feeling:**
 
 angry, overwhelmed, unsafe, etc.
 
-A text area to log how the user is feeling in the moment: 
+**A text area to log how the user is feeling in the moment:**
 
 'I feel uncle Bob is not listening to what I am saying'
 
-A text area to log how the user is feeling after the fact:
+**A text area to log how the user is feeling after the fact:**
 
 'thank goodness Billy showed up to get me away'
 
-A zero to ten rating to assign a value to how the user feels after the situation has passed:
+**A zero to ten rating to assign a value to how the user feels after the situation has passed:**
 
 postRating: 4,
 
-Preselected words that may matched how the user is feeling:
+**Preselected words that may matched how the user is feeling:**
 
 Relieved, tired, hopeful, thankful
 
 ## **Visual**
 See how it works!
 
-<img src="./public/assets/images/unravel.gif" width="200px">
+<img src="./public/assets/images/demoday.gif" width="200px">
 
 ## **Road Map**
 
@@ -66,7 +66,7 @@ See how it works!
 •  Other needs as they arise
 
 ## **Technologies**
-•  mobile environment (React Native)
+•  Mobile environment (React Native)
 •  Node, Express – dev frameworks
 •  Mongo – databaseExpo
 •  User Auth – Google Auth
@@ -82,7 +82,7 @@ The main contributors to this app are:
 Shad Lee, Jenn June and Mariño Carranza.
 
 ## **Acknowledgments**
-Many thanks are owed to Arron Linton and Catherine Pham for their unwavering guidance collaboration in the long road of development.
+Many thanks are owed to Catherine Pham and Arron Linton for their unwavering guidance collaboration in the long road of development.
 
 
 ## **Support**

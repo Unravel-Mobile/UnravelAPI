@@ -170,9 +170,15 @@ a:hover{
 }
 
 #pie{
+    padding-top:1%;
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pie{
     font-size: 1vw;
     text-align: center;
-    padding-top:1%
 }
 
 #people{
